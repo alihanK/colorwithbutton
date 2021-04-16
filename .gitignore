@@ -127,3 +127,37 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+import matplotlib.pyplot as plt
+from  matplotlib.widgets import Button
+
+x=list(range(0,11))
+y=list(range(0,110,10))
+
+fig,ax=plt.subplots()
+plt.subplots_adjust(left=0.1, bottom=0.3)
+p, = plt.plot(x,y, linewidth=2, color='green')
+
+axButton1= plt.axes([0.1, 0.1, 0.1, 0.1])#left,bottom,width,height
+
+btn1=Button(ax=axButton1, label='BLUE',  color='lightblue', hovercolor='blue')
+
+def btn1_blue(event):
+    p.set_color('blue')
+    plt.draw()
+    
+btn1.on_clicked(btn1_blue)
+
+
+axButton2= plt.axes([0.3, 0.1, 0.1, 0.1])#left,bottom,width,height
+
+btn2=Button(ax=axButton2, label='RED',  color='lightblue', hovercolor='red')
+
+
+def btn2_red(event):
+    p.set_color('red')
+    plt.draw()
+    
+btn2.on_clicked(btn2_red)
+
+plt.show()
